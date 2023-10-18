@@ -1,0 +1,79 @@
+.nav-bar {
+    position: absolute;
+    width: 100%;
+    height: 87px;
+    top: 0;
+    left: 0;
+    background-color: #00000077;
+    z-index: 2;
+    /* Cambia el valor de z-index a 2 */
+}
+
+.group {
+    position: absolute;
+    width: 234px;
+    height: 52px;
+    top: 17px;
+    left: 56px;
+}
+
+.element {
+    position: absolute;
+    width: 60px;
+    height: 50px;
+    top: 2px;
+    left: 0;
+}
+
+.text-wrapper {
+    position: absolute;
+    top: 30px;
+    left: 67px;
+    -webkit-text-stroke: 0.3px #ffffff;
+    font-family: "Poiret One-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.div {
+    position: absolute;
+    width: 164px;
+    top: 0;
+    left: 66px;
+    -webkit-text-stroke: 0.4px #ffffff;
+    font-family: "Poiret One-Regular", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+.group-2 {
+    display: flex;
+    justify-content: flex-end;
+    color: #fff;
+    gap: 50px;
+    margin-top: 30px;
+    margin-right: 40px;
+}
+
+.text-wrapper-2{
+    width: 5rem;
+    top: 0;
+    left: 0;
+    -webkit-text-stroke: 0.4px #ffffff;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 200;
+    color: #ffffff;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+    cursor: pointer;
+}
