@@ -1,4 +1,6 @@
-import '../assets/styles/Slide.css'
+import '../../assets/styles/Slide.css'
+import Icon from './Icon'
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
 const Slide = () => {
   return (
@@ -7,15 +9,16 @@ const Slide = () => {
         <div className="content">
           <div className="name">JUJUTSU <br /> KAISEN</div>
           <div className="des">Tinh ru anh di chay pho, chua kip chay pho thi anhchay mat tieu</div>
-          <button className="watch"><i className="fa-solid fa-play" style={{ color: '#ffffff' }}></i>Watch Now</button>
-          <button className="trailer"><i className="fa-solid fa-play" style={{ color: '#ffffff' }}></i>Trailer</button>
+          <button className="watch"><Icon css="" icon={faPlay} /> Watch Now</button>
+          <button className="trailer">Trailer</button>
         </div>
       </div>
       <div className="item" style={{backgroundImage: 'url(./assets/img/demon.jpg)'}}>
         <div className="content">
           <div className="name">DEMON <br /> SLAYER</div>
           <div className="des">Tinh ru anh di chay pho, chua kip chay pho thi anhchay mat tieu</div>
-          <button className="watch"><i className="fa-solid fa-play" style={{ color: '#ffffff' }}></i>WATCH NOW</button>
+          <button className="watch"><Icon css="" icon={faPlay} /> WATCH NOW</button>
+          <button className="trailer"><Icon css="" icon={faPlay} /> Trailer</button>
         </div>
       </div>
       <div className="item" style={{ backgroundImage: 'url(./assets/img/myHeroWallpaper.png)'}}>
