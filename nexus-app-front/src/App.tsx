@@ -1,13 +1,18 @@
 
 import './App.css'
-import Home from './components/layout/Home'
+// import Home from './components/layout/Home'
 
 function App() {
   
 
   return (
     <>
-      <Home />
+      {/* <Home /> */}
+      <div className="App">
+      <div className="AppGlass">
+     
+      </div>
+    </div>
     </>
   )
 }
