@@ -1,6 +1,7 @@
 import React from 'react'
 import Cards from '../Cards/Cards'
 import '../Dashboard/Dashboard.css'
+import   { CustomTable }  from '../Table/Table'
 
 const Dashboard = () => {
   return (
@@ -8,7 +9,8 @@ const Dashboard = () => {
        <div className="MainDash">
       <h1>Dashboard</h1>
       <Cards />
- 
+      
+    <CustomTable />
     </div>
     </div>
   )
