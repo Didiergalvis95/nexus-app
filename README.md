@@ -1,5 +1,6 @@
 # nexus-app
-## Aplicacion para anlisis de datos con react y django
+## Aplicacion para analisis de datos con react y django
 ### Realizado por:
 ### Didier Alexander Galvis Galvis
-### Maria Alejandra Aristizabal Flórezm
+### Maria Alejandra Aristizabal Flórez
+### Juliana Rios
