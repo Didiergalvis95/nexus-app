@@ -1,13 +1,19 @@
 import { useState } from 'react'
 import './App.css'
 import Dashboard from './components/Dashboard/Dashboard'
+import { RightSide } from './components/RightSide/RightSide'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <Dashboard />
+      <div className="App">
+      <div className="AppGlass">
+        <Dashboard/>
+        <RightSide/>
+      </div>
+    </div>
     </>
   )
 }
