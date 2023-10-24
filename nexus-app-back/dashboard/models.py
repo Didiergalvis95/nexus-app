@@ -82,3 +82,7 @@ class Venta(models.Model):
 
             self.orden = f"NXA{next_number:04d}"
         super(Venta, self).save(*args, **kwargs)
+        
+        
+#class estadisticas(models.Model):
+    
