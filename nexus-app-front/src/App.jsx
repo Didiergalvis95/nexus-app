@@ -1,21 +1,14 @@
-import { useState } from 'react'
+
 import './App.css'
-import Dashboard from './components/Dashboard/Dashboard'
-import { RightSide } from './components/RightSide/RightSide'
 import Home from './components/Home/Home'
+import Dashboard from './components/Dashboard/Dashboard'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      {/* <div className="App">
-      <div className="AppGlass">
-        <Dashboard/>
-        <RightSide/>
-      </div>
-    </div> */}
     <Home />
+    <Dashboard />
     </>
   )
 }

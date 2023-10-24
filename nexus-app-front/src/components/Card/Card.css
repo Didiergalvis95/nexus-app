@@ -71,6 +71,7 @@
     align-items: center;
     justify-content: space-around;
     padding: 1rem;
+    font-family: 'Poppins', sans-serif;
   }
   .ExpandedCard > span:nth-of-type(1) {
     color: white;

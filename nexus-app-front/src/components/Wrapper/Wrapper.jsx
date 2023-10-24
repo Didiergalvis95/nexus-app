@@ -26,7 +26,7 @@ const Wrapper = ({name, description, wrappertop}) => {
         checked={rating === 5}
         onChange={handleRatingChange}
       />
-      <label title="text" htmlFor="star5"></label>
+      <label title="text" htmlFor="star1"></label>
       <input
         value="4"
         name="rate"
@@ -35,7 +35,7 @@ const Wrapper = ({name, description, wrappertop}) => {
         checked={rating === 4}
         onChange={handleRatingChange}
       />
-      <label title="text" htmlFor="star4"></label>
+      <label title="text" htmlFor="star2"></label>
       <input
         value="3"
         name="rate"
@@ -53,7 +53,7 @@ const Wrapper = ({name, description, wrappertop}) => {
         checked={rating === 2}
         onChange={handleRatingChange}
       />
-      <label title="text" htmlFor="star2"></label>
+      <label title="text" htmlFor="star4"></label>
       <input
         value="1"
         name="rate"
@@ -62,9 +62,9 @@ const Wrapper = ({name, description, wrappertop}) => {
         checked={rating === 1}
         onChange={handleRatingChange}
       />
-      <label title="text" htmlFor="star1"></label>
+      <label title="text" htmlFor="star5"></label>
     </div>
-            <button className="watch"><Icon css=""
+            <button className="watch"><Icon css="" className="icon"
                 icon={faPlay} />
                 Watch Now</button>
             <button className="trailer">Trailer</button>

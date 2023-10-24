@@ -110,3 +110,7 @@
 .rating > input:checked ~ label {
   color: #ffa723;
 }
+
+.icon{
+  margin-right: 2px;
+}
