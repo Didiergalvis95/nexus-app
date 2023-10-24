@@ -11,5 +11,7 @@ urlpatterns=[
     path('',include(router.urls)),
     path('crear-empleados/', views.crear_empleados, name='crear_empleados'),
     path('crear-ventas/', views.crear_ventas, name='crear_ventas'),
-    path('crear-productos/', views.crear_productos, name='crear_productos')
+    path('crear-productos/', views.crear_productos, name='crear_productos'),
+    path('exportar-csv/<str:nombre_archivo>/', views.exportar_csv, name='exportar_csv'),
+    path('analisis/<str:nombre_archivo>/', views.analisis, name='analisis')
 ]
