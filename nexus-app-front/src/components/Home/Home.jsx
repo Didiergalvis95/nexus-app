@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import './Home.css'
 import Slide from '../Slide/Slide'
@@ -12,7 +12,7 @@ const Home = () => {
 
   const clubImages = [ "/img/titansWallpaper.jpg","/img/escanor.jpg", "/img/hero.jpg", "/img/demonSlayer.jpg" ];
 
-  const wallpaperImages = ["/img/demonWallpaper.png", "/img/titansWallpaper.png", "/img/melodi.jpg", "/img/myHeroWallpaper.png"];
+  const wallpaperImages = ["/img/demonWallpaper.png", "/img/titansWallpaper.png", "/img/melodias.jpeg", "/img/myHeroWallpaper.png"];
 
   const wrapper = ["#1 Most Popular", "#2 Most Popular", "#3 Most Popular", "#4 Most Popular"];
 
@@ -71,7 +71,7 @@ const Home = () => {
     <div className="container">
       <div className="overlap-wrapper">
         <div className="overlap">
-          <img class="wallpaperflare" alt="Wallpaperflare"
+          <img className="wallpaperflare" alt="Wallpaperflare"
             src={wallpaperImages[currentImageIndex]} />
           <Navbar />
           <Slide clubImages={clubImages}
@@ -84,7 +84,7 @@ const Home = () => {
           <div className="bottom-marks">
             <button id="prev" onClick={handleClickPrev}><Icon icon={faAngleLeft} css='' /></button>
             <button id="next" onClick={handleClickNext}><Icon icon={faAngleRight} css='' /></button>
-            <img class="vector" alt="Vector" src="/img/Vector 3.png" />
+            <img className="vector" alt="Vector" src="/img/Vector 3.png" />
             {mostrarTexto()}
           </div>
         </div>

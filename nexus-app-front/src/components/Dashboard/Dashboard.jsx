@@ -1,17 +1,23 @@
 import React from 'react'
 import Cards from '../Cards/Cards'
 import '../Dashboard/Dashboard.css'
-import   { CustomTable }  from '../Table/Table'
+import { CustomTable } from '../Table/Table'
+import { RightSide } from "../RightSide/RightSide";
 
 const Dashboard = () => {
   return (
-    <div>
-       <div className="MainDash">
-      <h1>Dashboard</h1>
-      <Cards />
+    <div className='dashboard'>
       
-    <CustomTable />
-    </div>
+      <div className="MainDash">
+        <div className='cardsTab'>
+        <h1 className='textTitle'>Dashboard</h1>
+          <Cards />
+          <CustomTable />
+        </div>
+        <div className='grahp'>
+          <RightSide />
+        </div>
+      </div>
     </div>
   )
 }
