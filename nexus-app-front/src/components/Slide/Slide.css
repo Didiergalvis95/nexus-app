@@ -1,0 +1,39 @@
+.clubs {
+    position: relative;
+    width: 75%; 
+    height: 415px; 
+    top: 440px;
+    left: 47%;
+  }
+  
+  .clubs img {
+    width: 17%; 
+    height: 100%; 
+    position: absolute;
+    top: 0;
+    border-radius: 30px;
+    box-shadow: 0 30px 50px #505050;
+    transition: transform 0.5s;
+  }
+  
+  .clubs img:nth-child(1) {
+    left: 0%;
+  }
+  
+  .clubs img:nth-child(2) {
+    left: 20%; 
+  }
+  
+  .clubs img:nth-child(3) {
+    left: 40%;
+  }
+  
+  .clubs img:nth-child(4) {
+    left: 60%;
+  }
+  
+  /* Ocultar imágenes adicionales */
+  .clubs img:nth-child(n + 5) {
+    display: none;
+  }
+  

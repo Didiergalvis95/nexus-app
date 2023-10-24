@@ -1,0 +1,68 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.container .overlap-wrapper {
+    overflow: hidden;
+    width: 1920px;
+    height: 1080px;
+}
+
+.container .overlap {
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+}
+
+.container .wallpaperflare {
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+.bottom-marks {
+    position: absolute;
+    width: 950px;
+    height: 88px;
+    top: 926px;
+    left: 864px;
+}
+
+.bottom-marks button {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    transition: 0.5s;
+    background: none;
+    cursor: pointer;
+    color: #fff;
+    margin: 2px;
+}
+
+.vector {
+    position: absolute;
+    width: 602px;
+    height: 2px;
+    top: 42px;
+    left: 241px;
+}
+
+.text-wrapper-7 {
+    position: absolute;
+    top: 7px;
+    left: 891px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 72px;
+    letter-spacing: 4.32px;
+    line-height: 81px;
+    white-space: nowrap;
+}
