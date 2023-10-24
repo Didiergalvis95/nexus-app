@@ -11,7 +11,7 @@
   --activeItem: #f799a354;
 }
 
-.App {
+/* .App {
    padding: 0.5rem 3.5rem; 
   color: var(--black);
   background: linear-gradient(
@@ -50,4 +50,4 @@
   .AppGlass{
     grid-template-columns: 1fr;
   } 
-}
+} */

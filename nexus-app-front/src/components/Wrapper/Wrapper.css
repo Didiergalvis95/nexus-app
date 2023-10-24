@@ -1,0 +1,112 @@
+/* Contenedor principal */
+.left-container {
+  position: absolute;
+  width: 651px;
+  height: 451px;
+  top: 380px;
+  left: 93px;
+  display: block;
+  transition: transform 0.3s ease; /* Transición para el contenedor */
+}
+
+/* Texto "most" */
+.most {
+  color: red;
+  font-size: 26px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+/* Título "name" */
+.name {
+  font-family: 'Permanent Marker', cursive;
+  font-weight: 800;
+  color: #ffffff;
+  font-size: 60px;
+  word-wrap: break-word;
+}
+
+/* Descripción "des" */
+.des {
+  width: 645px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 24px;
+  letter-spacing: 0.24px;
+  line-height: 33.6px;
+}
+
+/* Botón "Watch" */
+.watch {
+  margin-top: 20px;
+  border-radius: 20px;
+  height: 3.5rem;
+  width: 10rem;
+  background: red;
+  border: solid 2px red;
+  color: #fff;
+  box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.50);
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Botón "Trailer" */
+.trailer {
+  background: none;
+  border: 3px solid red;
+  box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.50);
+  border-radius: 20px;
+  margin-left: 20px;
+  height: 3.5rem;
+  width: 7rem;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Rating (estrellas) */
+.rating {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.rating > input {
+  display: none;
+}
+
+.rating > label {
+  cursor: pointer;
+  font-size: 40px;
+  color: #666;
+}
+
+.rating > label:before {
+  content: '★';
+  margin-right: 5px;
+}
+
+.rating > input:checked + label:before {
+  color: #ffa723;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: #e58e09;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #ff9e0b;
+}
+
+.rating > input:checked ~ label {
+  color: #ffa723;
+}
