@@ -1,0 +1,74 @@
+/* Estilos para el componente Line */
+.custom-margin-small {
+  margin: 1rem;
+}
+
+.custom-margin-medium {
+  margin: 2.5rem;
+}
+
+.custom-margin-large {
+  margin: 6rem;
+}
+
+.custom-margin-top {
+  margin-top: 2.5rem;
+}
+
+.custom-padding {
+  padding: 2.5rem;
+}
+
+.custom-bg-white {
+  background-color: #fff;
+}
+
+.custom-bg-dark {
+  background-color: #fff;
+}
+
+.rounded-custom {
+  border-radius: 1.5rem;
+}
+
+.custom-full-width {
+  width: 100%;
+}
+
+
+.text-welcome {
+    color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  left: 0;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 39px;
+  left: 35px;
+  white-space: nowrap;
+  width: 515px;
+}
+
+.pagina-de-dashboard .p {
+    color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  left: 35px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 95px;
+  width: 452px;
+}
+
+.pagina-de-dashboard .NFT {
+  height: 210px;
+  left: 550px;
+  object-fit: cover;
+  position: absolute;
+  top: 38px;
+  width: 273px;
+}
