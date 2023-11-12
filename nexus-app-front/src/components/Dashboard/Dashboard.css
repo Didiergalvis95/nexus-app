@@ -1,43 +1,33 @@
-
-.dashboard{
-    display: flex;
-    flex-direction: column;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    background-color: white;
-    gap: 20px;
+.dashboard-container {
+  margin: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: red;
 }
-.MainDash{
-    padding-top: 1rem;
-    overflow: hidden;
-    width: 1920px;
-    height: 1080px;
-    display: flex;
-    gap: 50px;
-}
-.textTitle{
-    margin-bottom: 3rem;
+.cards-container {
+  display: flex;
+  width: 90%;
 }
 
-.cardsTab{
-    margin-top: 4rem;
+.charts-container {
+  display: flex;
+  width: 100%;
+  background-color: beige;
 }
 
-.grahp{
-    margin-top: 4rem;
+.line-chart {
+  width: 50%;
+  background-color: black;
 }
 
-@media screen and (max-width: 1200px) {
-    .MainDash{
-        justify-content:flex-start;
-        margin-top: 2rem;
-    }
+.pie-chart {
+  width: 50%;
+  background-color: brown;
 }
 
-@media screen and (max-width: 768px)
-{
-    .MainDash{
-        align-items: center;
-    }
-}
+.table-container {
+    width: 95%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }

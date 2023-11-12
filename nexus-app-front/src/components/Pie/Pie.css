@@ -1,0 +1,37 @@
+/* Estilos para el componente Pie */
+.custom-margin-small {
+    margin: 1rem;
+  }
+  
+  .custom-margin-medium {
+    margin: 2.5rem;
+  }
+  
+  .custom-margin-large {
+    margin: 6rem;
+  }
+  
+  .custom-margin-top {
+    margin-top: 2.5rem;
+  }
+  
+  .custom-padding {
+    padding: 2.5rem;
+  }
+  
+  .custom-bg-white {
+    background-color: #fff;
+  }
+  
+  .custom-bg-dark {
+    background-color: #fff;
+  }
+  
+  .rounded-custom {
+    border-radius: 1.5rem;
+  }
+  
+  .custom-full-width {
+    width: 100%;
+  }
+  

@@ -1,20 +1,10 @@
-import React from 'react'
-import './Slide.css'
+import React from "react";
+import "./Slide.css";
 
-
-const Slide = ({
-  clubImages,
-  wallpaperImages,
-  currentImageIndex,
-  currentClubIndex,
-  clubImageRefs,
-  updateImages,
-}) => {
-
-
-    return (
-        <div class="clubs">
-            {clubImages.map((image, index) => (
+const Slide = ({ clubImages, clubImageRefs }) => {
+  return (
+    <div className="clubs">
+      {clubImages.map((image, index) => (
         <img
           key={index}
           ref={clubImageRefs[index]}
@@ -23,8 +13,8 @@ const Slide = ({
           src={image}
         />
       ))}
-        </div>
-    );
+    </div>
+  );
 };
 
-export default Slide
+export default Slide;
