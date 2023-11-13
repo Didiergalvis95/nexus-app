@@ -168,14 +168,3 @@ export const LinePrimaryYAxis = {
   majorTickLines: { width: 0 },
   minorTickLines: { width: 0 },
 };
-
-
-
-
-
-
-
-
-
-
-
