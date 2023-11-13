@@ -1,104 +1,102 @@
+from django.http import JsonResponse, HttpResponse
+from django.core.files.base import ContentFile
 from rest_framework import viewsets
-from django.http import JsonResponse
-from django.db.utils import IntegrityError
+from rest_framework.decorators import api_view
 from .serializer import *
-from .utils import *
 from .models import *
-import random as rd
+from unidecode import unidecode
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import base64 as b64
+import pandas as pd
+import os
 
 # Create your views here.
-class EmpleadoViewSet(viewsets.ModelViewSet):
-    queryset=Empleado.objects.all()
-    serializer_class= EmpleadoSerializer
+class AnimeViewSet(viewsets.ModelViewSet):
+    queryset=Anime.objects.all()
+    serializer_class= AnimeSerializer
 
 class VentaViewSet(viewsets.ModelViewSet):
     queryset=Venta.objects.all()
     serializer_class= VentaSerializer
 
-class ProductoViewSet(viewsets.ModelViewSet):
-    queryset=Producto.objects.all()
-    serializer_class= ProductoSerializer
+class TipoViewSet(viewsets.ModelViewSet):
+    queryset=Tipo.objects.all()
+    serializer_class= TipoSerializer
 
-def generar_numero_telefono():
-    numero_telefono = ''.join([str(rd.randint(0, 9)) for _ in range(10)])
-    return numero_telefono
+class EstadisticaViewSet(viewsets.ModelViewSet):
+    queryset=Estadistica.objects.all()
+    serializer_class= EstadisticaSerializer
 
-def crear_empleados(request):
+@api_view(['POST'])
+def crear_info(request):
     try:
-        for _ in range(1):
-            nombre = rd.choice(nombres)
-            apellido = rd.choice(apellidos)
-            salario = rd.randint(1160000, 18000000)
-            deudas = rd.choice([True, False])
-            retefuente = 1 if salario > 6000000 else 0
-            edad = rd.randint(22, 60)
-            correo = nombre+ str(edad)+"@correo.com"
-            numero_telefono = generar_numero_telefono()
-            cargo = rd.choice(['Desarrollador Junior', 'Desarrollador Intermedio', 
-                'Arquitecto', 'Desarrollador Avanzado'
-            ])
-            empleado = Empleado(
-                nombre= nombre, 
-                apellido=apellido,
-                salario_mensual=salario,
-                deudas= deudas,
-                retefuente= retefuente,
-                correo= correo,
-                telefono= numero_telefono,
-                cargo= cargo
-            )
-            empleado.save()
-        response_data = {"success": True, "message": "¡Empleados creados con éxito!"}
-    except IntegrityError:
-        response_data = {"success": False, "message": "Error: Ya existe un empleado con los mismos datos en la base de datos."}
-    except Exception as e:
-        response_data = {"success": False, "message": f"Error inesperado: {str(e)}"}
-    return JsonResponse(response_data)
+        file_base64 = request.data['file']
+        file_bytes = b64.b64decode(file_base64)
+        
+        path = os.path.join('nexus_app_back/exports/', 'anime.xlsx')
 
-""" def orden_personalizada():
-    for numero in range(1):
-        numero_formateado = f"NXA{numero:04d}"
-        yield numero_formateado
-"""
-def crear_ventas(request):
+        with open(path, 'wb') as file:
+            file.write(file_bytes)
+        
+        df = pd.read_excel(path)
+
+        encabezados = [unidecode(header.strip().replace('ñ', 'nh')) for header in df.columns]
+
+        print(encabezados)
+        
+        df.columns = encabezados
+
+        for _, row in df.iterrows():
+            anime, anime_validate  = Anime.objects.get_or_create(
+                nombre = row['Nombre'],
+                defaults ={
+                    'autor': row['Autor'],
+                    'anho_creacion': row['Anho creacion']
+                }
+            )
+            if not anime_validate:
+                continue
+            tipo, tipo_validate = Tipo.objects.get_or_create(
+                nombre = row['Tipo']
+            )
+            venta, venta_validate = Venta.objects.get_or_create(
+                anime = anime,
+                cantidad = row['Cantidad']
+            )
+        return JsonResponse({'message': 'Archivo procesado exitosamente', 'columnas': df.columns.tolist()})
+    except Exception as e:
+        print(f'Error en el servidor: {str(e)}')
+        return JsonResponse({'message': 'Error en el servidor'}, status=500)
+
+def generar_grafico(request, nombre):
     try:
-        #orden_seq = orden_personalizada()
-        for _ in range(5):
-            nombre = rd.choice(nombres)
-            apellido = rd.choice(apellidos)
-            cliente = nombre + " " + apellido
-            costo = rd.randint(150000, 800000)
-            #orden = next(orden_seq)
-            venta = Venta(
-                #orden= orden,
-                cliente= cliente, 
-                costo= costo
-            )
-            venta.save()
-        response_data = {"success": True, "message": "¡Ventas creadas con éxito!"}
-    except IntegrityError:
-        response_data = {"success": False, "message": "Error: Ya existe una venta con los mismos datos en la base de datos."}
-    except Exception as e:
-        response_data = {"success": False, "message": f"Error inesperado: {str(e)}"}
-    return JsonResponse(response_data)
+        tipo = Tipo.objects.get(nombre=nombre)
+        estadisticas = Estadistica.objects.filter(tipo=tipo)
 
-def crear_productos(request):
-    try:
-        for _ in range(3000):
-            nombre = rd.choice(productos)
-            costo = rd.randint(50000, 800000)
-            iva = costo * 0.19
+        if estadisticas:
+            nombres_anime = [estadistica.anime.nombre for estadistica in estadisticas]
+            cantidades = [float(estadistica.cantidad) for estadistica in estadisticas]
 
-            producto = Producto(
-                #orden= orden,
-                nombre= nombre, 
-                costo_unitario= costo,
-                iva= iva
-            )
-            producto.save()
-        response_data = {"success": True, "message": "¡Productos creados con éxito!"}
-    except IntegrityError:
-        response_data = {"success": False, "message": "Error: Ya existe un producto con los mismos datos en la base de datos."}
+            plt.bar(nombres_anime, cantidades)
+            plt.xlabel('Nombre del Anime')
+            plt.ylabel('Cantidad')
+            plt.title(f'Gráfico de Estadísticas - {tipo.nombre}')
+            plt.xticks(rotation=45, ha='right')
+            plt.ticklabel_format(style='plain', axis='y')
+            
+            plt.tight_layout()
+            path = os.path.join('nexus_app_back/exports/img', f'{nombre}.png')
+
+            plt.savefig(path, format='png')
+            plt.close()
+
+            return JsonResponse({'message': 'Imagen guardada con exito'})
+        else:
+            return JsonResponse({'message': 'No hay estadísticas para generar el gráfico'})
+    except Tipo.DoesNotExist:
+        return JsonResponse({'message': f'Tipo con nombre {nombre} no encontrado'}, status=404)
     except Exception as e:
-        response_data = {"success": False, "message": f"Error inesperado: {str(e)}"}
-    return JsonResponse(response_data)
+        print(f'Error en el servidor: {str(e)}')
+        return JsonResponse({'message': 'Error en el servidor'}, status=500)

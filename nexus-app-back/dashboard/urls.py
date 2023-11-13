@@ -1,17 +1,16 @@
 from django.urls import path, include
 from rest_framework import routers
-from dashboard import views
+from dashboard import views, utils
 
 router = routers.DefaultRouter()
-router.register(r'empleados', views.EmpleadoViewSet)
-router.register(r'ventas', views.VentaViewSet)
-router.register(r'productos', views.ProductoViewSet)
+router.register(r'anime', views.AnimeViewSet)
+router.register(r'venta', views.VentaViewSet)
+router.register(r'estadistica', views.EstadisticaViewSet)
+router.register(r'tipo', views.TipoViewSet)
 
 urlpatterns=[
     path('',include(router.urls)),
-    path('crear-empleados/', views.crear_empleados, name='crear_empleados'),
-    path('crear-ventas/', views.crear_ventas, name='crear_ventas'),
-    path('crear-productos/', views.crear_productos, name='crear_productos'),
-    path('exportar-csv/<str:nombre_archivo>/', views.exportar_csv, name='exportar_csv'),
-    path('analisis/<str:nombre_archivo>/', views.analisis, name='analisis')
+    path('exportar_csv/<str:nombre>/', utils.exportar_csv, name='exportar_csv'),
+    path('crear_info', views.crear_info, name='crear_info'),
+    path('generar_grafico/<str:nombre>/', views.generar_grafico, name='generar_grafico'),
 ]

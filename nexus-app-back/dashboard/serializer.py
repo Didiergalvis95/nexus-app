@@ -1,17 +1,25 @@
 from rest_framework import serializers
 from .models import *
 
-class EmpleadoSerializer(serializers.ModelSerializer):
+class AnimeSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Empleado
+        model = Anime
         fields = '__all__'
 
 class VentaSerializer(serializers.ModelSerializer):
+    anime = AnimeSerializer(read_only=True)
     class Meta:
         model = Venta
         fields = '__all__'
 
-class ProductoSerializer(serializers.ModelSerializer):
+class TipoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Producto
+        model = Tipo
+        fields = '__all__'
+
+class EstadisticaSerializer(serializers.ModelSerializer):
+    anime = AnimeSerializer(read_only=True)
+    tipo = TipoSerializer(read_only=True)
+    class Meta:
+        model = Estadistica
         fields = '__all__'
