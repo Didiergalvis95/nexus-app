@@ -11,9 +11,11 @@ const PieChart = ({ id, data, legendVisiblity, height }) => {
   return (
     <AccumulationChartComponent
       id={id}
-      legendSettings={{ visible: legendVisiblity, background: 'white' }}
-      height={height}
-      background={currentMode === 'Dark' ? '#33373E' : '#fff'}
+      legendSettings={{ visible: legendVisiblity, background: '#494848' }}
+      color='white'
+      height="400px"
+      width='800px'
+      background={currentMode === 'Dark' ? '#33373E' : '#494848'}
       tooltip={{ enable: true }}
     >
       <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip]} />

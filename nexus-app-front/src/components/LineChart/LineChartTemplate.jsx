@@ -4,9 +4,9 @@ import './Line.css'
 
 export const LineChartTemplate = () => {
   return (
-    <div className="custom-margin-small custom-margin-medium custom-margin-large custom-margin-top custom-padding custom-bg-white custom-bg-dark rounded-custom">
+    <div className="customLine">
     <div>Sales customer</div>
-    <div className="custom-full-width">
+    <div className="customLinew">
       <LineChart />
     </div>
   </div>

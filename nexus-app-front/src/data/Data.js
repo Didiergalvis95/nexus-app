@@ -10,11 +10,13 @@ import {
 
 import { UilUsdSquare, UilMoneyWithdrawal } from "@iconscout/react-unicons";
 
+
+
 export const cardsData = [
   {
     title: "Sales",
     color: {
-      backGround: "linear-gradient(180deg, #bb67ff 0%, #c484f3 100%)",
+      backGround: "#494848",
       boxShadow: "0px 10px 20px 0px #e0c6f5",
     },
     barValue: 70,
@@ -30,7 +32,7 @@ export const cardsData = [
   {
     title: "Sales",
     color: {
-      backGround: "linear-gradient(180deg, #bb67ff 0%, #c484f3 100%)",
+      backGround: "#494848",
       boxShadow: "0px 10px 20px 0px #e0c6f5",
     },
     barValue: 70,
@@ -46,7 +48,7 @@ export const cardsData = [
   {
     title: "Revenue",
     color: {
-      backGround: "linear-gradient(180deg, #FF919D 0%, #FC929D 100%)",
+      backGround: "#494848",
       boxShadow: "0px 10px 20px 0px #FDC0C7",
     },
     barValue: 80,
@@ -63,7 +65,7 @@ export const cardsData = [
     title: "Expenses",
     color: {
       backGround:
-        "linear-gradient(rgb(248, 212, 154) -146.42%, rgb(255 202 113) -46.42%)",
+        "#494848",
       boxShadow: "0px 10px 20px 0px #F9D59B",
     },
     barValue: 60,
@@ -126,7 +128,8 @@ export const lineCustomSeries = [
     name: 'Germany',
     width: '2',
     marker: { visible: true, width: 10, height: 10 },
-    type: 'Line' },
+    type: 'Line',
+    lineColor: 'red' },
 
   { dataSource: lineChartData[1],
     xName: 'x',
@@ -165,4 +168,3 @@ export const LinePrimaryYAxis = {
   majorTickLines: { width: 0 },
   minorTickLines: { width: 0 },
 };
-

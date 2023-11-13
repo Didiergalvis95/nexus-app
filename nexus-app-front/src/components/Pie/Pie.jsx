@@ -5,9 +5,9 @@ import './Pie.css'
 
 export const Pie = () => {
   return (
-    <div className="custom-margin-small custom-margin-medium custom-margin-large custom-margin-top custom-padding custom-bg-white custom-bg-dark rounded-custom">
+    <div className="customPie">
     <div>Sales customer</div>
-    <div className="custom-full-width">
+    <div className="customfullPie">
       <PieChart id="chart-pie" data={pieChartData} legendVisibility height="full" />
     </div>
   </div>

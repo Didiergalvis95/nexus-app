@@ -57,6 +57,7 @@ const CustomerReview = () => {
   };
   return <div className="CustomerReview">
         <Chart options={data.options} series={data.series} type="area" />
+       
   </div>;
 };
 

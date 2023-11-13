@@ -25,15 +25,15 @@
     overflow: visible;
   }
   .CircularProgressbar-path {
-    stroke: white !important;
+    stroke: rgb(66, 239, 255) !important;
     stroke-width: 12px !important;
-    filter: drop-shadow(2px 4px 6px white);
+    filter: drop-shadow(2px 4px 6px rgb(66, 239, 255));
   }
   .CircularProgressbar-trail {
     display: none;
   }
   .CircularProgressbar-text {
-    fill: white !important;
+    fill: rgb(66, 239, 255) !important;
   }
   
   .radialBar > span {

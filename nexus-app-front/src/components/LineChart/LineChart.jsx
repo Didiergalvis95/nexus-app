@@ -11,13 +11,16 @@ const LineChart = () => {
   return (
     <ChartComponent
       id="line-chart"
-      height="420px"
+      height="400px"
+      color='white'
+      width='700px'
       primaryXAxis={LinePrimaryXAxis}
       primaryYAxis={LinePrimaryYAxis}
       chartArea={{ border: { width: 0 } }}
       tooltip={{ enable: true }}
-      background={currentMode === 'Dark' ? '#33373E' : '#fff'}
-      legendSettings={{ background: 'white' }}
+      background={currentMode === 'Dark' ? '#33373E' : '#494848'}
+      legendSettings={{ background: '#494848' }}
+      
     >
       <Inject services={[LineSeries, DateTime, Legend, Tooltip]} />
       <SeriesCollectionDirective>

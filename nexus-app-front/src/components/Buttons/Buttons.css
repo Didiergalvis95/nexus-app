@@ -1,67 +1,22 @@
-/* .hideMovil{
-    width: 100%;;
-}
-
-.overlap{
-    margin-bottom: 15px;
-    padding: 10px 20px;
-    background: #424242c2;
-    border-radius: 5px;
-    box-shadow: 11px 15px 23px -1px rgba(128, 128, 128, 0.62);
-    -webkit-box-shadow: 11px 15px 23px -1px rgba(128, 128, 128, 0.62);
-    -moz-box-shadow: 11px 15px 23px -1px rgba(126, 126, 126, 0.62);
-    transition: background-color .3s,color .3s,transform .3s;
-    color: #000000;
-}
-
-.buttonOverlap{
-    display: flex;
-    width: 1000px;
-    height: 20rem;
-}
-
-.buttonOverlap{
-    display: flex;
-    margin: 0 -6px;
-}
-
-.overlap .buttonOverlap{
-    display: flex;
-    border-radius: 5px;
-    overflow: hidden;
-    padding: 10px;
-    position: relative;
-}
-
-
-
-
-
-
-
-
- */
-
  .overlap{
-  width: 100%;
-}
+  width: 95%;
+  margin-left: 3%;
+
+ 
 .wrapperOverlap{
     margin-bottom: 15px;
     padding: 10px 20px;
-    background: #424242c2;
     border-radius: 5px;
-    /* box-shadow: 11px 15px 23px -1px rgba(128, 128, 128, 0.62);
-    -webkit-box-shadow: 11px 15px 23px -1px rgba(128, 128, 128, 0.62);
-    -moz-box-shadow: 11px 15px 23px -1px rgba(126, 126, 126, 0.62); */
     transition: background-color .3s,color .3s,transform .3s;
     color: #000000;
     display: flex;
+    justify-content: space-around;
 }
  .item{
   box-sizing: border-box;
   display: flex;
   padding: 6px;
-  width: 10%;
+  width: 13%;
   height: 3.75rem;
   margin-left: 10px;
 }
@@ -79,8 +34,9 @@
   padding: 10px 5px;
   border-radius: 5px;
   width: 40px !important;
-  background-color: #fff !important;
+  background: #494848 !important;
   outline:0;
+  color: white;
 }
 
 .buttonPremiun .sprite{
@@ -102,7 +58,7 @@
   outline:0;
   box-shadow:none;
   border:0!important;
-  background: #5c6664;
+  background: #494848;
   background-image: none;
   flex: 1;
   padding: 0 .5em;
@@ -117,7 +73,7 @@ select::-ms-expand {
 .select {
   position: relative;
   display: flex;
-  width: 20em;
+  width: 30em;
   height: 3em;
   line-height: 3;
   background: #5c6664;
@@ -170,4 +126,27 @@ select::-ms-expand {
     position: relative;
     top: 3px;
     width: 16px;
+}
+
+.item-container{
+  display: flex;
+  gap: 20px;
+  width: 50%;
+  margin-left: 20%;
+}
+
+.item-container .item{
+  margin-left: 5%;
+}
+
+.buttonIcon{
+  background-color: white;
+  color: #333;
+  border-radius: 3px;
+  width: 16px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: 5px;
+  cursor: pointer;
 }

@@ -19,6 +19,7 @@
     "@mui/material": "^5.14.17",
     "@syncfusion/ej2": "^23.1.44",
     "@syncfusion/ej2-react-charts": "^23.1.44",
+    "@syncfusion/ej2-react-grids": "^23.1.44",
     "@syncfusion/ej2-react-inputs": "^23.1.43",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.0.0",

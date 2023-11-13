@@ -1,37 +1,19 @@
-/* Estilos para el componente Pie */
-.custom-margin-small {
-    margin: 1rem;
-  }
+.customPie{
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: #494848;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-left: 30px;
+  width: 40rem;
+  height: 455px;
+  width:800px ;
+}
   
-  .custom-margin-medium {
-    margin: 2.5rem;
-  }
-  
-  .custom-margin-large {
-    margin: 6rem;
-  }
-  
-  .custom-margin-top {
-    margin-top: 2.5rem;
-  }
-  
-  .custom-padding {
-    padding: 2.5rem;
-  }
-  
-  .custom-bg-white {
-    background-color: #fff;
-  }
-  
-  .custom-bg-dark {
-    background-color: #fff;
-  }
-  
-  .rounded-custom {
-    border-radius: 1.5rem;
-  }
-  
-  .custom-full-width {
+.customfullPie{
     width: 100%;
-  }
-  
+    display: flex;
+ } 
