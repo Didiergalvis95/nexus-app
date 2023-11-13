@@ -1,23 +1,45 @@
-import React from 'react'
-import Cards from '../Cards/Cards'
-import '../Dashboard/Dashboard.css'
-import { CustomTable } from '../Table/Table'
-import { RightSide } from "../RightSide/RightSide";
+import React, { useEffect } from "react";
+import "./Dashboard.css";
+import { LineChartTemplate } from "../LineChart/LineChartTemplate";
+import { Pie } from "../Pie/Pie";
+import { CustomTable } from "../Table/Table";
+import Cards from "../Cards/Cards";
+import Buttons from "../Buttons/Buttons";
+import { Welcome } from "../Welcome/Welcome";
+
 
 const Dashboard = () => {
   return (
-    <div className='dashboard'>
-      
-      <div className="MainDash">
-        <div className='cardsTab'>
-        <h1 className='textTitle'>Dashboard</h1>
-          <Cards />
+    <div className="dashboard-container">
+
+      <div className="buttons-container">
+        <Buttons />
+      </div>
+      <div>Dashboard</div>
+      <div className="container-nose">
+      <div className="section-container">
+        <div className="welcome-container">
+          <Welcome />
+        </div>
+        <div className="table-container">
           <CustomTable />
         </div>
-        <div className='grahp'>
-          <RightSide />
+        <div className="cards-container">
+          <Cards />
         </div>
       </div>
+
+
+      <div className="charts-container">
+        <div className="pie-chart">
+          <Pie />
+        </div>
+        <div className="line-chart">
+          <LineChartTemplate />
+        </div>
+      </div>
+      </div>
+
     </div>
   )
 }

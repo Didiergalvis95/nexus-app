@@ -6,6 +6,7 @@ import "react-circular-progressbar/dist/styles.css";
 import { motion} from "framer-motion";
 import { UilTimes } from "@iconscout/react-unicons";
 import Chart from "react-apexcharts";
+import 'react-circular-progressbar/dist/styles.css'; 
 
 
 const Card = (props) => {
@@ -28,7 +29,7 @@ function CompactCard({ param, setExpanded }) {
       className="CompactCard"
       style={{
         background: param.color.backGround,
-        boxShadow: param.color.boxShadow,
+        
       }}
       layoutId="expandableCard"
       onClick={setExpanded}
