@@ -7,11 +7,11 @@ const Card = (props) => {
   return (
     <div className="CompactCard" style={{ background: props.color.backGround }}>
       <div className="radialBar">
+      <p className="title-p">{props.title}</p>
         <CircularProgressbar
           value={props.barValue}
           text={`${props.barValue}%`}
         />
-        <span>{props.title}</span>
         <p>{props.value}</p>
       </div>
     </div>

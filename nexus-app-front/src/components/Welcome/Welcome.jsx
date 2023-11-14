@@ -6,10 +6,8 @@ export const Welcome = () => {
     <div className='welcomeCustome'>
       <div className='overlapWelcome'>
         <div>
-        <div className='text-welcome'>Bienvenido, Juan Camilo</div>
-        <p className='text-p'>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        Architecto dolore dolorem rerum nesciunt aperiam, nostrum quidem labore tempore expedita error 
-        odit libero ex. Aperiam, in voluptas similique autem veniam eum!</p>
+        <div className='text-welcome'>Bienvenido</div>
+        <p className='text-p'>¡Te damos la bienvenida al corazón mismo de tu experiencia anime! Este es tu espacio personal, donde los números cobran vida y los gráficos te cuentan las historias que amas. ¡Prepárate para sumergirte en el fascinante mundo de tus animes favoritos a través de datos y estadísticas!</p>
         </div>
         <div>
           <img className="NFT" alt="Nft" src="/img/NFT.png" />

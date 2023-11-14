@@ -28,8 +28,6 @@ const Dashboard = () => {
           <Cards />
         </div>
       </div>
-
-
       <div className="charts-container">
         <div className="pie-chart">
           <Pie />

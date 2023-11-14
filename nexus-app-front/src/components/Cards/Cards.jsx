@@ -12,12 +12,6 @@ const Cards = () => {
       },
       barValue: 98,
       value: "Death Note",
-      series: [
-        {
-          name: "Sales",
-          data: [31, 40, 28, 51, 42, 109, 100],
-        },
-      ],
     },
     {
       title: "Calidad de Animacion",
