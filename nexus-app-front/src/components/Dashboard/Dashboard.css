@@ -5,7 +5,7 @@
   justify-content: center;
   background-color: #333;
   width: 1920px;
-  height: 130vh;
+  height: 135vh;
 }
 
 .container-nose{
@@ -37,4 +37,12 @@
 
 .pie-chart {
   width: 40%;
+}
+
+.text-dashboard{
+  color: white;
+  font-weight: 600;
+  font-size: 50px;
+  margin-right: 78%;
+  margin-bottom: 2rem;
 }

@@ -5,6 +5,7 @@ import { faBell } from "@fortawesome/free-solid-svg-icons"
 import { faUser } from "@fortawesome/free-solid-svg-icons"
 import Icon from '../Icon/Icon'
 import './Navbar.css'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
@@ -13,8 +14,8 @@ const Navbar = () => {
       <div className='text-wrapper-2'>NexusOn</div>
     </div>
     <div className="group">
-        <div className="text-wrapper active">Home</div>
-        <div className="text-wrapper">Dashboard</div>
+    <div className="text-wrapper"><Link to="/" className="nav-link">Home</Link></div>
+        <div className="text-wrapper"><Link to="/dashboard" className="nav-link">Dashboard</Link></div>
         <div className="text-wrapper">Blog</div>
         <div className="text-wrapper">Stream</div>
     </div>

@@ -1,15 +1,14 @@
-/* Contenedor principal */
+
 .left-container {
   position: absolute;
   width: 651px;
   height: 451px;
   top: 380px;
-  left: 93px;
+  left: 70px;
   display: block;
-  transition: transform 0.3s ease; /* Transición para el contenedor */
 }
 
-/* Texto "most" */
+
 .most {
   color: red;
   font-size: 26px;
@@ -18,7 +17,7 @@
   word-wrap: break-word;
 }
 
-/* Título "name" */
+
 .name {
   font-family: 'Permanent Marker', cursive;
   font-weight: 800;
@@ -26,8 +25,6 @@
   font-size: 60px;
   word-wrap: break-word;
 }
-
-/* Descripción "des" */
 .des {
   width: 645px;
   font-family: 'Poppins', sans-serif;
@@ -38,7 +35,7 @@
   line-height: 33.6px;
 }
 
-/* Botón "Watch" */
+
 .watch {
   margin-top: 20px;
   border-radius: 20px;
@@ -54,10 +51,10 @@
 }
 
 .icon {
-  margin-right: 10px; /* Puedes ajustar el valor según tu preferencia */
+  margin-right: 10px; 
 }
 
-/* Botón "Trailer" */
+
 .trailer {
   background: none;
   border: 3px solid red;
@@ -72,7 +69,6 @@
   cursor: pointer;
 }
 
-/* Rating (estrellas) */
 .rating {
   display: flex;
   align-items: center;

@@ -5,7 +5,7 @@ import './Line.css'
 export const LineChartTemplate = () => {
   return (
     <div className="customLine">
-    <div>Sales customer</div>
+    <div className='textCustomer'>Impacto Cultural</div>
     <div className="customLinew">
       <LineChart />
     </div>

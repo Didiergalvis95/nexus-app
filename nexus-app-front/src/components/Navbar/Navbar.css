@@ -64,10 +64,19 @@
     color: #fff;
     gap: 50px;
     font-size: 20px;
-    margin-right: 50px;
+    margin-right: 9rem;
     cursor: pointer;
 }
 
 .group-3 .icon:hover{
-    color: rgba(255, 0, 0, 0.879);
+    color: rgba(255, 29, 29, 0.879);
 }
+
+.nav-link{
+    text-decoration: none;
+    color: white;
+}
+
+.text-wrapper a:hover {
+    color: rgba(255, 29, 29, 0.879);
+  }

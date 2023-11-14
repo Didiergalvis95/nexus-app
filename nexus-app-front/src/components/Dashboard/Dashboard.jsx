@@ -15,7 +15,7 @@ const Dashboard = () => {
       <div className="buttons-container">
         <Buttons />
       </div>
-      <div>Dashboard</div>
+      <div className="text-dashboard">Dashboard</div>
       <div className="container-nose">
       <div className="section-container">
         <div className="welcome-container">

@@ -1,12 +1,37 @@
 import React from 'react';
-import { AccumulationChartComponent, AccumulationSeriesCollectionDirective, AccumulationSeriesDirective, AccumulationLegend, PieSeries, AccumulationDataLabel, Inject, AccumulationTooltip } from '@syncfusion/ej2-react-charts';
+import axios from 'axios';
+import {
+  AccumulationChartComponent,
+  AccumulationSeriesCollectionDirective,
+  AccumulationSeriesDirective,
+  AccumulationLegend,
+  PieSeries,
+  AccumulationDataLabel,
+  Inject,
+  AccumulationTooltip
+} from '@syncfusion/ej2-react-charts';
 import { useStateContext } from '../Context/ContextProvider';
 
+const PieChart = ({ id, legendVisiblity }) => {
+  const peticion = "http://127.0.0.1:8000/dashboard/estadistica";
 
+  const context = useStateContext();
+  const currentMode = context ? context.currentMode : null;
+  const [pieGraph, setPieGraph] = React.useState([]);
 
-const PieChart = ({ id, data, legendVisiblity, height }) => {
-    const context = useStateContext();
-    const currentMode = context ? context.currentMode : null;
+  const getPieGraph = async () => {
+    try {
+      const res = await axios.get(peticion);
+      const filteredData = res.data.filter(item => item.tipo.nombre === "Recepcion Critica");
+      setPieGraph(filteredData);
+    } catch (error) {
+      console.error("Error al obtener los datos:", error);
+    }
+  };
+
+  React.useEffect(() => {
+    getPieGraph();
+  }, []);
 
   return (
     <AccumulationChartComponent
@@ -22,9 +47,9 @@ const PieChart = ({ id, data, legendVisiblity, height }) => {
       <AccumulationSeriesCollectionDirective>
         <AccumulationSeriesDirective
           name="Sale"
-          dataSource={data}
-          xName="x"
-          yName="y"
+          dataSource={pieGraph}
+          xName="anime.nombre"
+          yName="cantidad"
           innerRadius="40%"
           startAngle={0}
           endAngle={360}
