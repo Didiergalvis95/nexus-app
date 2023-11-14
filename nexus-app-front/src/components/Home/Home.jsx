@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import './Home.css'
 import Slide from '../Slide/Slide'
@@ -8,20 +8,19 @@ import { faAngleLeft } from "@fortawesome/free-solid-svg-icons"
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons"
 
 const Home = () => {
-  const textos = ["01", "02", "03", "04","05","06"];
-  const textImages =["TOT", "NNT", "BHA", "KNY", "OP", "CM"];
-  const clubImages = [ "/img/titansWallpaper.jpg", "/img/escanor.jpg", "/img/hero.jpg",  "/img/demonSlayer.jpg","/img/zoro.jpg","/img/jujursu.jpg" ];
+  const textos = ["01", "02", "03", "04"];
 
-  const wallpaperImages = ["/img/demonWallpaper.png", "/img/titansWallpaper.png", "/img/melodias.jpeg", "/img/myHeroWallpaper.png", "/img/onepiecee.jpg", "/img/chaw.jpg"];
+  const clubImages = [ "/img/titansWallpaper.jpg", "/img/escanor.jpg", "/img/hero.jpg",  "/img/demonSlayer.jpg"];
+
+  const wallpaperImages = ["/img/demonWallpaper.png", "/img/titansWallpaper.png", "/img/melodias.jpeg", "/img/myHeroWallpaper.png"];
   const videoImages =["https://www.youtube.com/embed/-AwLMRgcEoA?si=YALZpeWaRzmCMMaJ&amp;start=3", "https://www.youtube.com/embed/FRn6xXXF-7s?si=_OjpcMZRjDqfImyr&amp;start=9", "https://www.youtube.com/embed/wxcvbL6o55M?si=n50OlTU5cEXxxsZw&amp;start=2","https://www.youtube.com/embed/lFXpmYK6SEQ?si=ST7PEhbKDTO01ZAF&amp;start=5"]
-  const wrapper = ["#1 Most Popular", "#2 Most Popular", "#3 Most Popular", "#4 Most Popular", "#5 Most Popular"];
+  const wrapper = ["#1 Most Popular", "#2 Most Popular", "#3 Most Popular", "#4 Most Popular"];
 
-  const wrapperName = ["KIMETSU NO YAIBA", "ATTACK ON TITANS", "NANATSU NO TAIZAI", " BOKU NO HERO ACADEMIA", "ONE PIECE"];
+  const wrapperName = ["KIMETSU NO YAIBA", "ATTACK ON TITANS", "NANATSU NO TAIZAI", " BOKU NO HERO ACADEMIA"];
 
   const wrapperDescription = ["In the Taisho era, Tanjiro Kamado, a young man who sells charcoal to support his family, returns home to find everyone murdered by the demon Muzan Kibutsuji. His only surviving family, his sister Nezuko, becomes a demon but struggles not to harm Tanjiro.",
     "The story is set in a fictional world on the brink of extinction due to titans, giant humanoid creatures. Humanity takes refuge within three colossal walls to protect themselves from the titans. Eren Jaeger, after losing his mother to the titans. Later on, Eren discovers that he can transform into a titan with special abilities, triggering crucial events in the plot.",
     "Meliodas defeated the Great Holy Knight Hendrickson; however, he had only been manipulated to break the seal that contained the Ten Commandments, powerful warriors who work directly under the orders of the Demon King, to whom Meliodas once belonged as well.",
-    "Izuku Midoriya, a young boy living in a world where over half of the population has developed superpowers, giving rise to both heroes and villains. His greatest dream is to become a hero like his idol 'All Might,' a superhero with an American design and imagery who fights against evil.",
     "Izuku Midoriya, a young boy living in a world where over half of the population has developed superpowers, giving rise to both heroes and villains. His greatest dream is to become a hero like his idol 'All Might,' a superhero with an American design and imagery who fights against evil."
   ];
 
@@ -32,7 +31,6 @@ const Home = () => {
   const [currentDescripIndex, setCurrentDescripIndex] = useState(0);
   const [currentWrapperIndex, setCurrentWrapperIndex] = useState(0);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
   const clubImageRefs = Array.from({ length: clubImages.length }, () => useRef(null));
   const updateImages = () => {
@@ -40,10 +38,6 @@ const Home = () => {
       ref.current.src = clubImages[(currentClubIndex + index) % clubImages.length];
     });
   };
-
-  useEffect(() => {
-    updateImages();
-  }, [currentImageIndex, currentTextIndex]);
 
   const mostrarTexto = () => {
     return (
@@ -62,7 +56,6 @@ const Home = () => {
     setCurrentDescripIndex((currentDescripIndex - 1 + wrapperDescription.length) % wrapperDescription.length)
     setCurrentWrapperIndex((currentWrapperIndex - 1 + wrapper.length) % wrapper.length);
     setCurrentVideoIndex((currentVideoIndex - 1 + videoImages) % videoImages.length);
-    setCurrentTextIndex((currentTextIndex - 1 + textImages) % textImages.length);
     updateImages()
   };
 
@@ -74,7 +67,6 @@ const Home = () => {
     setCurrentDescripIndex((currentDescripIndex + 1) % wrapperDescription.length);
     setCurrentWrapperIndex((currentWrapperIndex + 1) % wrapper.length);
     setCurrentVideoIndex((currentVideoIndex + 1) % videoImages.length);
-    setCurrentTextIndex((currentTextIndex + 1) % textImages.length);
     updateImages()
   };
 
@@ -86,10 +78,11 @@ const Home = () => {
             src={wallpaperImages[currentImageIndex]} />
           <Navbar />
           <Slide clubImages={clubImages}
+            wallpaperImages={wallpaperImages}
+            currentImageIndex={currentImageIndex}
+            currentClubIndex={currentClubIndex}
             clubImageRefs={clubImageRefs}
-            updateImages={updateImages}
-            textImages={textImages}
-            currentTextIndex={currentTextIndex} />
+            updateImages={updateImages} />
           <Wrapper name={wrapperName[currentSeriesIndex]} description={wrapperDescription[currentDescripIndex]} wrappertop={wrapper[currentWrapperIndex]} video={videoImages[currentVideoIndex]} />
           <div className="bottom-marks">
             <button id="prev" onClick={handleClickPrev}><Icon icon={faAngleLeft} css='' /></button>
