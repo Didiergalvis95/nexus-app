@@ -10,7 +10,8 @@ router.register(r'tipo', views.TipoViewSet)
 
 urlpatterns=[
     path('',include(router.urls)),
-    path('exportar_csv/<str:nombre>/', utils.exportar_csv, name='exportar_csv'),
     path('crear_info', views.crear_info, name='crear_info'),
+    path('exportar_csv/<str:nombre>/', utils.exportar_csv, name='exportar_csv'),
     path('generar_grafico/<str:nombre>/', views.generar_grafico, name='generar_grafico'),
+    path('generar_pdf/<str:nombre>/', views.generar_pdf, name='generar_pdf')
 ]
