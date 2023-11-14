@@ -8,60 +8,23 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import axios from "axios";
 
-const columns = [
-  { id: 'name', label: 'Name', minWidth: 170 },
-  { id: 'code', label: 'ISO\u00a0Code', minWidth: 100 },
-  {
-    id: 'population',
-    label: 'Population',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
-  },
-  {
-    id: 'size',
-    label: 'Size\u00a0(km\u00b2)',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
-  },
-  {
-    id: 'density',
-    label: 'Density',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toFixed(2),
-  },
-];
-
-function createData(name, code, population, size) {
-  const density = population / size;
-  return { name, code, population, size, density };
-}
-
-const rows = [
-  createData('India', 'IN', 1324171354, 3287263),
-  createData('China', 'CN', 1403500365, 9596961),
-  createData('Italy', 'IT', 60483973, 301340),
-  createData('United States', 'US', 327167434, 9833520),
-  createData('Canada', 'CA', 37602103, 9984670),
-  createData('Australia', 'AU', 25475400, 7692024),
-  createData('Germany', 'DE', 83019200, 357578),
-  createData('Ireland', 'IE', 4857000, 70273),
-  createData('Mexico', 'MX', 126577691, 1972550),
-  createData('Japan', 'JP', 126317000, 377973),
-  createData('France', 'FR', 67022000, 640679),
-  createData('United Kingdom', 'GB', 67545757, 242495),
-  createData('Russia', 'RU', 146793744, 17098246),
-  createData('Nigeria', 'NG', 200962417, 923768),
-  createData('Brazil', 'BR', 210147125, 8515767),
-];
-
-export const CustomTable = () =>  {
-
+export const CustomTable = () => {
+  const [estadistica, setEstadistica] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const peticion = "http://127.0.0.1:8000/dashboard/venta";
+
+  const getStack = async () => {
+    try {
+      const res = await axios.get(peticion);
+      setEstadistica(res.data);
+    } catch (error) {
+      console.error("Error al obtener los datos:", error);
+    }
+  };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -72,8 +35,41 @@ export const CustomTable = () =>  {
     setPage(0);
   };
 
+  React.useEffect(() => {
+    getStack();
+  }, []);
+
+  const columns = [
+    {
+      id: "nombre",
+      label: "NOMBRE",
+      minWidth: 170,
+    },
+    {
+      id: "autor",
+      label: "AUTOR",
+      minWidth: 100,
+    },
+    {
+      id: "anho_creacion",
+      label: "AÑO DE CREACIÓN",
+      minWidth: 170,
+      align: "right",
+    },
+    {
+      id: "cantidad",
+      label: "CANTIDAD",
+      minWidth: 170,
+      align: "right",
+      format: (value) =>
+      typeof value === "string"
+        ? parseFloat(value).toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+        : value,
+  },
+  ];
+
   return (
-    <Paper sx={{ width: '100%', overflow: 'hidden', background: '#494848' }}>
+    <Paper sx={{ width: "100%", overflow: "hidden", background: "#494848" }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
@@ -82,7 +78,11 @@ export const CustomTable = () =>  {
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth, background: '#494848', color:'white'  }}
+                  style={{
+                    minWidth: column.minWidth,
+                    background: "#6d6d6d",
+                    color: "white",
+                  }}
                 >
                   {column.label}
                 </TableCell>
@@ -90,21 +90,31 @@ export const CustomTable = () =>  {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows
+            {estadistica
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                  <TableRow
+                    hover
+                    role="checkbox"
+                    tabIndex={-1}
+                    key={row.id}
+                  >
                     {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align} style={{
-                          color: 'white'
-                        }}>
-                          {column.format && typeof value === 'number'
-                            ? column.format(value)
-                            : value}
-                            
+                    const value = column.id === 'cantidad' ? row.cantidad : row.anime[column.id];
+                    return (
+                      <TableCell
+                        key={column.id}
+                        align={column.align}
+                        style={{
+                          color: "white",
+                        }}
+                      >
+                        {column.format && typeof value !== "object" ? (
+                            column.format(value)
+                          ) : (
+                            value
+                          )}
                         </TableCell>
                       );
                     })}
@@ -117,14 +127,14 @@ export const CustomTable = () =>  {
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
-        count={rows.length}
+        count={estadistica.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
-        style={{ color: 'white' }}
-        
+        style={{ color: "white" }}
       />
     </Paper>
   );
-}
+};
+

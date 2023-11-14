@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Navbar from '../Navbar/Navbar'
 import './Home.css'
 import Slide from '../Slide/Slide'
@@ -9,7 +9,7 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons"
 
 const Home = () => {
   const textos = ["01", "02", "03", "04","05","06"];
-
+  const textImages =["TOT", "NNT", "BHA", "KNY", "OP", "CM"];
   const clubImages = [ "/img/titansWallpaper.jpg", "/img/escanor.jpg", "/img/hero.jpg",  "/img/demonSlayer.jpg","/img/zoro.jpg","/img/jujursu.jpg" ];
 
   const wallpaperImages = ["/img/demonWallpaper.png", "/img/titansWallpaper.png", "/img/melodias.jpeg", "/img/myHeroWallpaper.png", "/img/onepiecee.jpg", "/img/chaw.jpg"];
@@ -32,6 +32,7 @@ const Home = () => {
   const [currentDescripIndex, setCurrentDescripIndex] = useState(0);
   const [currentWrapperIndex, setCurrentWrapperIndex] = useState(0);
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
   const clubImageRefs = Array.from({ length: clubImages.length }, () => useRef(null));
   const updateImages = () => {
@@ -39,6 +40,10 @@ const Home = () => {
       ref.current.src = clubImages[(currentClubIndex + index) % clubImages.length];
     });
   };
+
+  useEffect(() => {
+    updateImages();
+  }, [currentImageIndex, currentTextIndex]);
 
   const mostrarTexto = () => {
     return (
@@ -57,6 +62,7 @@ const Home = () => {
     setCurrentDescripIndex((currentDescripIndex - 1 + wrapperDescription.length) % wrapperDescription.length)
     setCurrentWrapperIndex((currentWrapperIndex - 1 + wrapper.length) % wrapper.length);
     setCurrentVideoIndex((currentVideoIndex - 1 + videoImages) % videoImages.length);
+    setCurrentTextIndex((currentTextIndex - 1 + textImages) % textImages.length);
     updateImages()
   };
 
@@ -68,6 +74,7 @@ const Home = () => {
     setCurrentDescripIndex((currentDescripIndex + 1) % wrapperDescription.length);
     setCurrentWrapperIndex((currentWrapperIndex + 1) % wrapper.length);
     setCurrentVideoIndex((currentVideoIndex + 1) % videoImages.length);
+    setCurrentTextIndex((currentTextIndex + 1) % textImages.length);
     updateImages()
   };
 
@@ -79,11 +86,10 @@ const Home = () => {
             src={wallpaperImages[currentImageIndex]} />
           <Navbar />
           <Slide clubImages={clubImages}
-            wallpaperImages={wallpaperImages}
-            currentImageIndex={currentImageIndex}
-            currentClubIndex={currentClubIndex}
             clubImageRefs={clubImageRefs}
-            updateImages={updateImages} />
+            updateImages={updateImages}
+            textImages={textImages}
+            currentTextIndex={currentTextIndex} />
           <Wrapper name={wrapperName[currentSeriesIndex]} description={wrapperDescription[currentDescripIndex]} wrappertop={wrapper[currentWrapperIndex]} video={videoImages[currentVideoIndex]} />
           <div className="bottom-marks">
             <button id="prev" onClick={handleClickPrev}><Icon icon={faAngleLeft} css='' /></button>

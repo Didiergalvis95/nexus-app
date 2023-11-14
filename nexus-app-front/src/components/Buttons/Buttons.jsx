@@ -2,17 +2,54 @@ import React, { useState } from "react";
 import "./Buttons.css";
 import axios from "axios";
 
-const peticion = "http://127.0.0.1:8000/home/exportar-csv/";
-
+const peticion = "http://127.0.0.1:8000/dashboard/exportar_csv/";
+const peticionPng = "http://127.0.0.1:8000/dashboard/generar_grafico/";
+const peticionPdf = "http://127.0.0.1:8000/dashboard/generar_pdf/";
+const peticionTipo = "http://127.0.0.1:8000/dashboard/tipo/";
 const Buttons = () => {
-  const [nombre, setNombre] = useState("");
+  const [nombres, setNombre] = useState("");
   const [error, setError] = useState(null);
+  const [tipos, setTipos] = useState([]);
+
+  const getTipo = async () => {
+    try {
+      const res = await axios.get(peticionTipo);
+      setTipos(res.data);
+    } catch (error) {
+      console.error("Error al obtener los datos:", error);
+    }
+  };
+  const getPdf = async () => {
+    try {
+      const res = await axios.get(`${peticionPdf}${nombres}`);
+      setNombre(res.data);
+    } catch (error) {
+      console.error("Error al obtener los datos:", error);
+    }
+  };
+  const getPng = async () => {
+    try {
+      const res = await axios.get(`${peticionPng}${nombres}`);
+      setNombre(res.data);
+    } catch (error) {
+      console.error("Error al obtener los datos:", error);
+    }
+  };
+
+  React.useEffect(() => {
+    getTipo();
+    getPdf();
+    getPng();
+  }, []);
+
 
   const handleDownloadCSV = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get(`${peticion}${nombre}`);
+      const response = await axios.get(`${peticion}${nombres}`);
       const csvData = response.data;
+
+      console.log("Contenido del CSV:", csvData);
       setError(null);
       console.log(csvData);
       const blob = new Blob([new Uint8Array([0xef, 0xbb, 0xbf]), csvData], {
@@ -32,54 +69,49 @@ const Buttons = () => {
     }
   };
 
+
   return (
     <div className="overlap">
       <div className="wrapperOverlap">
-        <div class="select">
-          <select name="format" id="format">
-            <option selected disabled>
-              Selecciona
-            </option>
-            <option value="pdf">..-</option>
-            <option value="txt">...</option>
-            <option value="epub">...</option>
-            <option value="fb2">...</option>
-            <option value="mobi">...</option>
-          </select>
+        <div className="select">
+          {tipos.length > 0 && (
+            <select name="format" id="format" onChange={(e) => setNombre(e.target.value)}>
+              <option value="" disabled >
+                Selecciona
+              </option>
+              {tipos.map((tipo) => (
+                <option key={tipo.id} value={tipo.nombre}>
+                  {tipo.nombre}
+                </option>
+              ))}
+            </select>
+          )}
         </div>
         <div className="item-container">
-        <div className="item">
-          <div className="buttonPremiun">
-            <span className="sprite pdf"></span>
-            <span>PDF</span>
-            <span className="buttonIcon">+</span>
-          </div>
-        </div>
-        
-        <div className="item">
-          <div className="buttonPremiun">
-            <span className="sprite png"></span>
-            <span>PDF</span>
-            <span className="buttonIcon">+</span>
-          </div>
-        </div>
-        <div className="item">
-          <div className="buttonPremiun">
-            <span className="sprite csv"></span>
-            <span>PDF</span>
-            <span className="buttonIcon">+</span>
-          </div>
-        </div>
-        <div className="item">
-          <div className="buttonPremiun">
-            <span className="sprite svg"></span>
-            <span>PDF</span>
-            <span className="buttonIcon">+</span>
+          <div className="item">
+            <button className="buttonPremiun" onClick={getPdf}>
+              <span className="sprite pdf"></span>
+              <span>PDF</span>
+              <span className="buttonIcon">+</span>
+            </button>
           </div>
 
+          <div className="item">
+            <button className="buttonPremiun" onClick={getPng}>
+              <span className="sprite png"></span>
+              <span>PDF</span>
+              <span className="buttonIcon">+</span>
+            </button>
+          </div>
+          <div className="item">
+            <button className="buttonPremiun" onClick={handleDownloadCSV}>
+              <span className="sprite csv"></span>
+              <span>CSV</span>
+              <span className="buttonIcon">+</span>
+            </button>
+          </div>
         </div>
-        </div>
-        
+
       </div>
     </div>
   );

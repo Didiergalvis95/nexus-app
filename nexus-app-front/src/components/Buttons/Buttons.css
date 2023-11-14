@@ -92,7 +92,7 @@ select::-ms-expand {
   transition:.25s all ease;
 }
 .select:hover::after {
-  color: #23b499;
+  color: #76c8ff;
 }
 
 
